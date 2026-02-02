@@ -303,6 +303,11 @@ a:hover {
     margin-bottom: var(--space-md);
 }
 
+.section-divider {
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--rule);
+}
+
 /* Research Areas */
 .research-area-block {
     padding: var(--space-lg) 0;
