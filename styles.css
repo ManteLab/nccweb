@@ -625,8 +625,8 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: var(--icon);
-    border: 1px solid var(--rule);
+    color: var(--muted);
+    border: 1px solid var(--accent);
     border-radius: 999px;
     padding: 0.25rem 0.65rem;
     font-size: 0.75rem;
@@ -636,8 +636,8 @@ a:hover {
 }
 
 .publication-action:hover {
-    color: var(--icon-hover);
-    border-color: var(--icon-hover);
+    color: var(--fg);
+    border-color: var(--fg);
 }
 
 .publication-action i {
