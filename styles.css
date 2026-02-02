@@ -319,6 +319,19 @@ a:hover {
     padding-bottom: 0;
 }
 
+.research-publications-card {
+    text-align: left;
+    margin-top: var(--space-md);
+}
+
+.research-publications-card .publication-list {
+    margin-top: var(--space-md);
+}
+
+.research-publications-card .publication-item {
+    padding: var(--space-sm) 0;
+}
+
 /* Research Areas Grid */
 .research-areas-grid {
     display: grid;
