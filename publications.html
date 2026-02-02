@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K65RMWP2DT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-K65RMWP2DT');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications — Mante Lab</title>
+    <meta name="description" content="Peer-reviewed articles, conference papers, and preprints from the Mante Lab.">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo">Mante Lab</a>
+                <nav class="nav">
+                    <a href="research.html" class="nav-link">Research</a>
+                    <a href="publications.html" class="nav-link active">Publications</a>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="workwithus.html" class="nav-link">Work with Us</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <div class="back-link-container">
+                    <a href="index.html" class="back-link">Back to Home</a>
+                </div>
+
+                <section class="section">
+                    <h1 class="page-title">Publications</h1>
+                    <p class="hero-description">
+                        A complete list of journal articles, conference papers, and preprints authored by members of
+                        the Mante Lab.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">All Publications</h2>
+                    <div id="publications-container">
+                        <p class="loading-text">Loading publications...</p>
+                    </div>
+                </section>
+
+                <script>
+                    // BibTeX Parser
+                    function parseBibTeX(bibtex) {
+                        const entries = [];
+                        // Match BibTeX entries: @type{key, ... }
+                        const entryRegex = /@(\w+)\s*\{\s*([^,]+)\s*,([^@]*?)(?=\n@|\n*$)/gs;
+                        let match;
+
+                        while ((match = entryRegex.exec(bibtex)) !== null) {
+                            const type = match[1].toLowerCase();
+                            const key = match[2].trim();
+                            const content = match[3];
+
+                            const entry = { type, key };
+
+                            // Parse fields
+                            const fieldRegex = /(\w+)\s*=\s*\{([^}]*)\}/g;
+                            let fieldMatch;
+
+                            while ((fieldMatch = fieldRegex.exec(content)) !== null) {
+                                const fieldName = fieldMatch[1].toLowerCase();
+                                let fieldValue = fieldMatch[2].trim();
+
+                                // Clean up LaTeX special characters
+                                fieldValue = fieldValue
+                                    .replace(/\\["'`^~=.uvHtcdb]\{(\w)\}/g, '$1')  // Accented chars
+                                    .replace(/\{\\["'`^~=.uvHtcdb](\w)\}/g, '$1')  // Alt format
+                                    .replace(/\{\\'(\w)\}/g, '$1')
+                                    .replace(/\\['`^~"]=?(\w)/g, '$1')
+                                    .replace(/\{/g, '')
+                                    .replace(/\}/g, '')
+                                    .replace(/\s+/g, ' ');
+
+                                entry[fieldName] = fieldValue;
+                            }
+
+                            if (entry.author && entry.title && entry.year) {
+                                entries.push(entry);
+                            }
+                        }
+
+                        return entries;
+                    }
+
+                    // Format authors (shorten if too many)
+                    function formatAuthors(authors) {
+                        // Split by ' and '
+                        const authorList = authors.split(/\s+and\s+/);
+                        return authorList.map(a => {
+                            // Handle "Last, First" format
+                            if (a.includes(',')) {
+                                const parts = a.split(',').map(p => p.trim());
+                                const lastName = parts[0];
+                                const firstNames = parts[1] || '';
+                                // Get initials
+                                const initials = firstNames.split(/\s+/)
+                                    .map(n => n.charAt(0) + '.')
+                                    .join(' ');
+                                return `${lastName} ${initials}`.trim();
+                            }
+                            return a.trim();
+                        }).join(', ');
+                    }
+
+                    // Format venue
+                    function formatVenue(entry) {
+                        let venue = '';
+
+                        if (entry.journal) {
+                            venue = entry.journal;
+                        } else if (entry.booktitle) {
+                            venue = entry.booktitle;
+                        } else if (entry.howpublished) {
+                            venue = entry.howpublished;
+                        }
+
+                        if (entry.volume) {
+                            venue += `, ${entry.volume}`;
+                            if (entry.number) {
+                                venue += `(${entry.number})`;
+                            }
+                        }
+
+                        if (entry.pages) {
+                            venue += `, ${entry.pages}`;
+                        }
+
+                        venue += `, ${entry.year}`;
+
+                        return venue;
+                    }
+
+                    // Group entries by year
+                    function groupByYear(entries) {
+                        const groups = {};
+                        entries.forEach(entry => {
+                            const year = entry.year;
+                            if (!groups[year]) {
+                                groups[year] = [];
+                            }
+                            groups[year].push(entry);
+                        });
+                        return groups;
+                    }
+
+                    // Render publications
+                    function renderPublications(entries) {
+                        const container = document.getElementById('publications-container');
+
+                        if (entries.length === 0) {
+                            container.innerHTML = '<p>No publications found.</p>';
+                            return;
+                        }
+
+                        // Sort entries by year (descending)
+                        entries.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+
+                        // Group by year
+                        const grouped = groupByYear(entries);
+                        const years = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
+
+                        let html = '';
+
+                        years.forEach(year => {
+                            html += `<h3 class="publication-year">${year}</h3>`;
+                            html += '<ul class="publication-list">';
+
+                            grouped[year].forEach(entry => {
+                                html += `
+                                    <li class="publication-item">
+                                        <span class="publication-authors">${formatAuthors(entry.author)}</span>
+                                        <span class="publication-title">${entry.title}</span>
+                                        <span class="publication-venue">${formatVenue(entry)}</span>
+                                    </li>
+                                `;
+                            });
+
+                            html += '</ul>';
+                        });
+
+                        container.innerHTML = html;
+                    }
+
+                    // Load and parse BibTeX file
+                    async function loadPublications() {
+                        try {
+                            const response = await fetch('publications.bib');
+                            if (!response.ok) {
+                                throw new Error('Failed to fetch publications.bib');
+                            }
+                            const bibtex = await response.text();
+                            const entries = parseBibTeX(bibtex);
+                            renderPublications(entries);
+                        } catch (error) {
+                            console.error('Error loading publications:', error);
+                            document.getElementById('publications-container').innerHTML =
+                                '<p class="error-text">Failed to load publications. Please try again later.</p>';
+                        }
+                    }
+
+                    // Load publications when DOM is ready
+                    document.addEventListener('DOMContentLoaded', loadPublications);
+                </script>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <span>© 2026 Mante Lab</span>
+                    <div class="footer-logos">
+                        <img src="eth_logo.svg" alt="ETH Zürich" class="footer-logo footer-logo-eth">
+                        <img src="uzh_logo.svg" alt="University of Zürich" class="footer-logo">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
