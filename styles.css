@@ -36,6 +36,20 @@
     --max-width: 1200px;
     --header-height: 6rem;
     --title-size: 1.8rem;
+    --box-radius: 12px;
+    color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+    --bg: #f6f2ee;
+    --fg: #1f1c1a;
+    --fg-soft: #4a4540;
+    --muted: #7b736a;
+    --rule: #ddd5ce;
+    --accent: #8c8780;
+    --icon: #2a2522;
+    --icon-hover: #b86a4b;
+    color-scheme: light;
 }
 
 /* ============================================
@@ -199,6 +213,39 @@ a:hover {
     background-color: var(--accent);
 }
 
+.theme-toggle {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.theme-toggle:hover {
+    color: var(--fg);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.inline-nav-link {
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
+
+.inline-nav-link:hover {
+    color: var(--fg);
+}
+
 /* ============================================
    Main Content
    ============================================ */
@@ -245,7 +292,7 @@ a:hover {
     width: 100%;
     max-height: 400px;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 /* ============================================
@@ -308,6 +355,47 @@ a:hover {
     border-bottom: 1px solid var(--rule);
 }
 
+.section.section-divider {
+    margin-bottom: var(--space-lg);
+}
+
+.section-divider-top {
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--rule);
+}
+
+.research-area-block,
+.section-divider-top {
+    scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+}
+
+.section-links {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    padding-bottom: 0;
+    margin-top: var(--space-md);
+}
+
+.section-link {
+    white-space: normal;
+    flex: 1 1 180px;
+    min-height: 3.6rem;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0.6rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg);
+}
+
+.section-link:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+}
+
 /* Research Areas */
 .research-area-block {
     padding: var(--space-lg) 0;
@@ -319,17 +407,54 @@ a:hover {
     padding-bottom: 0;
 }
 
-.research-publications-card {
+.apply-card.research-publications-card {
     text-align: left;
     margin-top: var(--space-md);
+    padding: var(--space-md);
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--box-radius);
 }
 
-.research-publications-card .publication-list {
-    margin-top: var(--space-md);
+.apply-card.research-publications-card h3 {
+    text-align: left;
+    margin: 0 0 var(--space-sm) 0;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
-.research-publications-card .publication-item {
-    padding: var(--space-sm) 0;
+.apply-card.research-publications-card .publication-list {
+    margin-top: var(--space-sm);
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.35rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+}
+
+.apply-card.research-publications-card .publication-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.apply-card.research-publications-card .publication-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.apply-card.research-publications-card .publication-list::-webkit-scrollbar-thumb {
+    background-color: var(--muted);
+    border-radius: 999px;
+}
+
+.apply-card.research-publications-card .publication-item {
+    padding: var(--space-xs) 0;
+    gap: var(--space-sm);
+}
+
+.apply-card.research-publications-card .publication-authors,
+.apply-card.research-publications-card .publication-title,
+.apply-card.research-publications-card .publication-venue {
+    font-size: 0.8125rem;
 }
 
 /* Research Areas Grid */
@@ -476,7 +601,7 @@ a:hover {
     position: relative;
     padding: var(--space-md);
     border: 1px solid var(--rule);
-    border-radius: 4px;
+    border-radius: var(--box-radius);
     transition: border-color 0.2s ease;
 }
 
@@ -560,7 +685,7 @@ a:hover {
 .contact-info {
     padding: var(--space-lg);
     border: 1px solid var(--rule);
-    border-radius: 4px;
+    border-radius: var(--box-radius);
     background-color: rgba(255, 255, 255, 0.02);
 }
 
@@ -590,9 +715,9 @@ a:hover {
     margin-top: var(--space-lg);
     padding: var(--space-md) var(--space-xl);
     background: transparent;
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    color: var(--fg);
+    border: 1px solid var(--accent);
+    border-radius: var(--box-radius);
+    color: var(--muted);
     font-family: var(--font-body);
     font-size: 1rem;
     text-decoration: none;
@@ -600,8 +725,8 @@ a:hover {
 }
 
 .apply-button:hover {
-    border-color: var(--accent);
-    background-color: rgba(184, 106, 75, 0.05);
+    border-color: var(--fg);
+    background-color: transparent;
     color: var(--fg);
 }
 
@@ -656,7 +781,7 @@ a:hover {
     gap: 0.35rem;
     color: var(--muted);
     border: 1px solid var(--accent);
-    border-radius: 999px;
+    border-radius: var(--box-radius);
     padding: 0.25rem 0.65rem;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
@@ -671,6 +796,27 @@ a:hover {
 
 .publication-action i {
     font-size: 0.85rem;
+}
+
+.publication-action.section-link {
+    color: var(--fg);
+}
+
+.publication-action.section-link:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+}
+
+.resource-action {
+    text-transform: none;
+    letter-spacing: 0.02em;
+}
+
+.resource-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: var(--space-sm) 0;
 }
 
 .publication-authors {
@@ -688,6 +834,11 @@ a:hover {
 .publication-venue {
     color: var(--muted);
     font-size: 0.875rem;
+}
+
+.citation-list .publication-item {
+    padding: 0;
+    border-bottom: none;
 }
 
 .publication-year {
@@ -796,6 +947,10 @@ a:hover {
     }
 
     .nav-link {
+        font-size: 0.75rem;
+    }
+
+    .theme-toggle {
         font-size: 0.75rem;
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -18,6 +18,7 @@
         content="Explore our research areas in computational neuroscience, cognitive modeling, and neural networks.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -31,6 +32,10 @@
                     <a href="publications.html" class="nav-link">Publications</a>
                     <a href="team.html" class="nav-link">Team</a>
                     <a href="workwithus.html" class="nav-link">Work with Us</a>
+                    <button class="theme-toggle" type="button" aria-label="Switch to light mode"
+                        title="Switch to light mode">
+                        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -57,10 +62,22 @@
                         approaches for high-dimensional datasets, advancing data science in neuroscience and related
                         fields.
                     </p>
+                    <div class="section-links">
+                        <a class="publication-action resource-action section-link" href="#inferring-structure"
+                            data-scroll-target="inferring-structure">Inferring Structure in High-Dimensional Data</a>
+                        <a class="publication-action resource-action section-link" href="#behavioral-mechanisms"
+                            data-scroll-target="behavioral-mechanisms">Behavioral Mechanisms of Cognition</a>
+                        <a class="publication-action resource-action section-link" href="#neural-mechanisms"
+                            data-scroll-target="neural-mechanisms">Neural Mechanisms of Cognition</a>
+                        <a class="publication-action resource-action section-link" href="#natural-behavior"
+                            data-scroll-target="natural-behavior">Structure and Dynamics of Natural Behavior</a>
+                        <a class="publication-action resource-action section-link" href="#code-data"
+                            data-scroll-target="code-data">Code &amp; Data</a>
+                    </div>
                 </section>
 
                 <section class="section">
-                    <div class="research-area-block">
+                    <div class="research-area-block" id="inferring-structure">
                         <h2 class="section-title">Inferring Structure in High-Dimensional Data</h2>
                         <p class="hero-description">
                             Advances in experimental methodologies in neuroscience lead to ever-larger behavioral and
@@ -81,8 +98,7 @@
                             descriptions of the structure of high-dimensional behavioral and neural data.
                         </p>
                         <div class="contact-info apply-card research-publications-card">
-                            <h3>Selected publications</h3>
-                            <p class="card-description">Relevant publications for this research area.</p>
+                            <h3>Selected Publications</h3>
                             <ul class="publication-list">
                                 <li class="publication-item">
                                     <div class="publication-details">
@@ -96,6 +112,7 @@
                                         <a class="publication-action" href="pub_pdf/Mante2013.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -111,6 +128,7 @@
                                         <a class="publication-action" href="pub_pdf/Kollmorgen2020.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -119,7 +137,7 @@
                         </div>
                     </div>
 
-                    <div class="research-area-block">
+                    <div class="research-area-block" id="behavioral-mechanisms">
                         <h2 class="section-title">Behavioral Mechanisms of Cognition</h2>
                         <p class="hero-description">
                             Decision-making paradigms are used in basic and clinical research to reveal the processes
@@ -142,7 +160,7 @@
                         </p>
                     </div>
 
-                    <div class="research-area-block">
+                    <div class="research-area-block" id="neural-mechanisms">
                         <h2 class="section-title">Neural Mechanisms of Cognition</h2>
                         <p class="hero-description">
                             Our past work lends support to the hypothesis of "computation-through-dynamics", the idea
@@ -168,8 +186,7 @@
                             disorders.
                         </p>
                         <div class="contact-info apply-card research-publications-card">
-                            <h3>Selected publications</h3>
-                            <p class="card-description">Relevant publications for this research area.</p>
+                            <h3>Selected Publications</h3>
                             <ul class="publication-list">
                                 <li class="publication-item">
                                     <div class="publication-details">
@@ -183,6 +200,7 @@
                                         <a class="publication-action" href="pub_pdf/Mante2013.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -198,6 +216,7 @@
                                         <a class="publication-action" href="pub_pdf/Galgali2018.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -215,6 +234,7 @@
                                         <a class="publication-action" href="pub_pdf/Krause2022.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -230,6 +250,7 @@
                                         <a class="publication-action" href="pub_pdf/Galgali2023.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -246,6 +267,7 @@
                                         <a class="publication-action" href="pub_pdf/Flesch2023.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -262,6 +284,7 @@
                                         <a class="publication-action" href="pub_pdf/SoldadoMagraner2024.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -278,6 +301,7 @@
                                         <a class="publication-action" href="pub_pdf/Pagan2024.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -294,6 +318,7 @@
                                         <a class="publication-action" href="pub_pdf/Ehret2024.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -310,6 +335,7 @@
                                         <a class="publication-action" href="pub_pdf/Calangiu2025.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -318,7 +344,7 @@
                         </div>
                     </div>
 
-                    <div class="research-area-block">
+                    <div class="research-area-block" id="natural-behavior">
                         <h2 class="section-title">Structure and Dynamics of Natural Behavior</h2>
                         <p class="hero-description">
                             While our models of neural computation are mostly based on neural activity recorded in
@@ -344,8 +370,7 @@
                             machine-learning.
                         </p>
                         <div class="contact-info apply-card research-publications-card">
-                            <h3>Selected publications</h3>
-                            <p class="card-description">Relevant publications for this research area.</p>
+                            <h3>Selected Publications</h3>
                             <ul class="publication-list">
                                 <li class="publication-item">
                                     <div class="publication-details">
@@ -358,6 +383,7 @@
                                         <a class="publication-action" href="pub_pdf/Kollmorgen2020.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -375,6 +401,7 @@
                                         <a class="publication-action" href="pub_pdf/Marks2021.pdf" download
                                             target="_blank" rel="noopener" title="Download PDF"
                                             aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
                                             <span>PDF</span>
                                         </a>
                                     </div>
@@ -384,8 +411,141 @@
                     </div>
                 </section>
 
+                <section class="section section-divider-top" id="code-data">
+                    <h2 class="section-title">Code &amp; Data</h2>
+                    <p class="hero-description">
+                        All the data and code below are made available under the
+                        <a class="inline-nav-link" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
+                            rel="noopener">GPL3 license</a>, unless specified otherwise under the corresponding link.
+                        Please cite the relevant publication(s) if you use any of the data or code in a manuscript.
+                    </p>
+
+                    <div class="research-area-block">
+                        <h3>Neural recordings and code from Mante et al, Nature 2013</h3>
+                        <p class="hero-description">
+                            This dataset includes neural recordings from FEF and pre-arcuate cortex in macaque monkeys
+                            and Matlab code to perform Targeted Dimensionality Reduction on the recordings.
+                        </p>
+                        <div class="publication-actions resource-actions">
+                            <a class="publication-action resource-action" href="PFC+data.zip" download target="_blank"
+                                rel="noopener">Neural recordings</a>
+                            <a class="publication-action resource-action" href="tdr.zip" download target="_blank"
+                                rel="noopener">Code for Targeted dimensionality reduction (TDR)</a>
+                        </div>
+                        <ul class="publication-list citation-list">
+                            <li class="publication-item">
+                                <div class="publication-details">
+                                    <span class="publication-authors">Mante V., Sussillo D., Shenoy K. V., Newsome
+                                        W. T.</span>
+                                    <span class="publication-title">Context-dependent computation by recurrent dynamics
+                                        in prefrontal cortex.</span>
+                                    <span class="publication-venue">Nature 503, 78--84, 2013.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="research-area-block">
+                        <h3>Code from Kollmorgen et al, Nature 2020</h3>
+                        <p class="hero-description">
+                            The Matlab code below implements the nearest-neighbour-based analyses in Kollmorgen et al
+                            (repertoire dating).
+                        </p>
+                        <div class="publication-actions resource-actions">
+                            <a class="publication-action resource-action"
+                                href="https://github.com/skollmor/repertoireDating" target="_blank" rel="noopener">Code
+                                for nearest-neighbor analyses (repertoire dating)</a>
+                        </div>
+                        <ul class="publication-list citation-list">
+                            <li class="publication-item">
+                                <div class="publication-details">
+                                    <span class="publication-authors">Kollmorgen S., Hahnloser R.H.R., Mante V.</span>
+                                    <span class="publication-title">Nearest neighbours reveal fast and slow components
+                                        of motor learning.</span>
+                                    <span class="publication-venue">Nature 577, 526--530, 2020. DOI:
+                                        10.1038/s41586-019-1892-x.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="research-area-block">
+                        <h3>Neural recordings from Calangiu et al, Cell Reports 2025</h3>
+                        <p class="hero-description">
+                            This dataset includes Utah-array recordings from prefrontal cortex of macaque monkeys
+                            engaged in a variety of behavioral tasks (instructed saccades, perceptual decisions,
+                            value-based decisions).
+                        </p>
+                        <div class="publication-actions resource-actions">
+                            <a class="publication-action resource-action" href="https://zenodo.org/records/14360532"
+                                target="_blank" rel="noopener">Processed data</a>
+                            <a class="publication-action resource-action"
+                                href="https://www.research-collection.ethz.ch/entities/researchdata/9228a14f-20a6-4956-a7cf-7d3f4fcc8d57"
+                                target="_blank" rel="noopener">Raw data</a>
+                        </div>
+                        <ul class="publication-list citation-list">
+                            <li class="publication-item">
+                                <div class="publication-details">
+                                    <span class="publication-authors">Calangiu I., Kollmorgen S., Reppas J., Mante
+                                        V.</span>
+                                    <span class="publication-title">Prospective and retrospective representations of
+                                        saccadic movements in primate prefrontal cortex.</span>
+                                    <span class="publication-venue">Cell Reports, 44 (2), 2025.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
             </div>
         </main>
+
+        <script>
+            document.querySelectorAll('[data-scroll-target]').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const targetId = link.getAttribute('data-scroll-target');
+                    const target = document.getElementById(targetId);
+                    if (!target) {
+                        return;
+                    }
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, '', `#${targetId}`);
+                });
+            });
+        </script>
+        <script>
+            (() => {
+                const root = document.documentElement;
+                const toggle = document.querySelector('.theme-toggle');
+                if (!toggle) {
+                    return;
+                }
+                const icon = toggle.querySelector('i');
+                const stored = localStorage.getItem('theme');
+                if (stored === 'light' || stored === 'dark') {
+                    root.setAttribute('data-theme', stored);
+                }
+
+                const updateIcon = () => {
+                    const isLight = root.getAttribute('data-theme') === 'light';
+                    icon.classList.toggle('fa-moon', isLight);
+                    icon.classList.toggle('fa-sun', !isLight);
+                    toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+                    toggle.setAttribute('title', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+                    toggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+                };
+
+                updateIcon();
+                toggle.addEventListener('click', () => {
+                    const isLight = root.getAttribute('data-theme') === 'light';
+                    const next = isLight ? 'dark' : 'light';
+                    root.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
+                    updateIcon();
+                });
+            })();
+        </script>
 
         <!-- Footer -->
         <footer class="footer">
