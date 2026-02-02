@@ -601,10 +601,47 @@ a:hover {
 .publication-item {
     padding: var(--space-md) 0;
     border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
 }
 
 .publication-item:last-child {
     border-bottom: none;
+}
+
+.publication-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.publication-actions {
+    display: flex;
+    align-items: center;
+}
+
+.publication-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--icon);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.publication-action:hover {
+    color: var(--icon-hover);
+    border-color: var(--icon-hover);
+}
+
+.publication-action i {
+    font-size: 0.85rem;
 }
 
 .publication-authors {
@@ -753,5 +790,14 @@ a:hover {
 
     .research-areas-grid {
         grid-template-columns: 1fr;
+    }
+
+    .publication-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .publication-actions {
+        margin-top: var(--space-xs);
     }
 }

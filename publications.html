@@ -17,6 +17,7 @@
     <meta name="description" content="Peer-reviewed articles, conference papers, and preprints from the Mante Lab.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -161,6 +162,42 @@
                         return groups;
                     }
 
+                    const PDF_DIR = 'pub_pdf';
+
+                    function buildPdfUrl(key) {
+                        return `${PDF_DIR}/${encodeURIComponent(key)}.pdf`;
+                    }
+
+                    async function pdfExists(url) {
+                        try {
+                            const response = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+                            if (response.ok) {
+                                return true;
+                            }
+                            if (response.status === 405) {
+                                const fallback = await fetch(url, {
+                                    method: 'GET',
+                                    headers: { Range: 'bytes=0-0' },
+                                    cache: 'no-store'
+                                });
+                                return fallback.ok;
+                            }
+                        } catch (error) {
+                            console.warn(`PDF check failed for ${url}:`, error);
+                        }
+                        return false;
+                    }
+
+                    async function attachPdfLinks(entries) {
+                        const checks = entries.map(async entry => {
+                            const pdfUrl = buildPdfUrl(entry.key);
+                            const available = await pdfExists(pdfUrl);
+                            entry.pdfUrl = available ? pdfUrl : null;
+                            return entry;
+                        });
+                        return Promise.all(checks);
+                    }
+
                     // Render publications
                     function renderPublications(entries) {
                         const container = document.getElementById('publications-container');
@@ -184,11 +221,24 @@
                             html += '<ul class="publication-list">';
 
                             grouped[year].forEach(entry => {
+                                const pdfAction = entry.pdfUrl ? `
+                                    <div class="publication-actions">
+                                        <a class="publication-action" href="${entry.pdfUrl}" download
+                                            target="_blank" rel="noopener" title="Download PDF" aria-label="Download PDF">
+                                            <i class="fa-solid fa-book" aria-hidden="true"></i>
+                                            <span>PDF</span>
+                                        </a>
+                                    </div>
+                                ` : '';
+
                                 html += `
                                     <li class="publication-item">
-                                        <span class="publication-authors">${formatAuthors(entry.author)}</span>
-                                        <span class="publication-title">${entry.title}</span>
-                                        <span class="publication-venue">${formatVenue(entry)}</span>
+                                        <div class="publication-details">
+                                            <span class="publication-authors">${formatAuthors(entry.author)}</span>
+                                            <span class="publication-title">${entry.title}</span>
+                                            <span class="publication-venue">${formatVenue(entry)}</span>
+                                        </div>
+                                        ${pdfAction}
                                     </li>
                                 `;
                             });
@@ -208,7 +258,8 @@
                             }
                             const bibtex = await response.text();
                             const entries = parseBibTeX(bibtex);
-                            renderPublications(entries);
+                            const entriesWithPdfs = await attachPdfLinks(entries);
+                            renderPublications(entriesWithPdfs);
                         } catch (error) {
                             console.error('Error loading publications:', error);
                             document.getElementById('publications-container').innerHTML =
