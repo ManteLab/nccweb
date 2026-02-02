@@ -303,6 +303,17 @@ a:hover {
     margin-bottom: var(--space-md);
 }
 
+/* Research Areas */
+.research-area-block {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.research-area-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
 /* Research Areas Grid */
 .research-areas-grid {
     display: grid;
