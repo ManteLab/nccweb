@@ -293,6 +293,7 @@ a:hover {
     max-height: 400px;
     object-fit: contain;
     border-radius: 20px;
+    mix-blend-mode: screen;
 }
 
 /* ============================================
@@ -435,10 +436,14 @@ a:hover {
 .highdim-intro-figure-video {
     width: 100%;
     max-width: 100%;
+    isolation: isolate;
 }
 
 .highdim-intro-figure-video .highdim-intro-image {
     width: 100%;
+    mix-blend-mode: screen;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .highdim-intro-figure-video-neural {
