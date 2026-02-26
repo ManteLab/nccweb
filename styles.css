@@ -407,6 +407,85 @@ a:hover {
     padding-bottom: 0;
 }
 
+.highdim-intro-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 1fr);
+    gap: var(--space-lg);
+    align-items: center;
+    margin-bottom: var(--space-sm);
+    position: relative;
+}
+
+.highdim-intro-layout .hero-description {
+    margin-bottom: 0;
+}
+
+.highdim-intro-figure {
+    width: fit-content;
+    max-width: 92%;
+    margin: 0;
+    align-self: center;
+    justify-self: center;
+}
+
+.highdim-inferring-figure {
+    max-width: 88%;
+}
+
+.highdim-intro-figure-video {
+    width: 100%;
+    max-width: 100%;
+}
+
+.highdim-intro-figure-video .highdim-intro-image {
+    width: 100%;
+}
+
+.highdim-intro-figure-video-neural {
+    max-width: 70%;
+    transform: translateX(-1.0rem);
+}
+
+.highdim-intro-figure-video-torre {
+    place-self: center;
+    transform: scale(1.4) translate(-1.5rem, -2.0rem);
+}
+
+.highdim-intro-figure-video-guiomar {
+    place-self: center;
+    transform: scale(1.7) translateY(-1.5rem);
+}
+
+.highdim-intro-figure-video-monkeys {
+    transform: translateY(-1.5rem);
+}
+
+.highdim-intro-image {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--box-radius);
+    object-fit: contain;
+    display: block;
+}
+
+.highdim-image-credit {
+    position: absolute;
+    right: 0;
+    bottom: auto;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: var(--fg-soft);
+    background: none;
+    border-radius: 0;
+    pointer-events: none;
+    text-align: right;
+    white-space: nowrap;
+}
+
 .apply-card.research-publications-card {
     text-align: left;
     margin-top: var(--space-md);
@@ -800,11 +879,12 @@ a:hover {
 
 .publication-action.section-link {
     color: var(--fg);
+    border-color: var(--rule);
 }
 
 .publication-action.section-link:hover {
     color: var(--fg);
-    border-color: var(--fg);
+    border-color: var(--muted);
 }
 
 .resource-action {
@@ -934,6 +1014,25 @@ a:hover {
 
     .research-areas-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .highdim-intro-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .highdim-intro-figure {
+        max-width: 520px;
+    }
+
+    .highdim-inferring-figure {
+        max-width: 500px;
+    }
+
+    .highdim-image-credit {
+        position: static;
+        display: block;
+        margin-top: var(--space-xs);
+        text-align: right;
     }
 }
 
